@@ -20,6 +20,7 @@
 		250E5FEA23313513007246F0 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E5FE923313513007246F0 /* ImageView.swift */; };
 		250E5FED23313B74007246F0 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E5FEC23313B74007246F0 /* ImageLoader.swift */; };
 		250E5FF023313C07007246F0 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250E5FEF23313C07007246F0 /* ContentViewModel.swift */; };
+		2567C69E244617A30028F26B /* StargazerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2567C69D244617A20028F26B /* StargazerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		250E5FE923313513007246F0 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		250E5FEC23313B74007246F0 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		250E5FEF23313C07007246F0 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		2567C69D244617A20028F26B /* StargazerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StargazerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 			children = (
 				250E5FCD232FDB0A007246F0 /* ContentView.swift */,
 				250E5FE923313513007246F0 /* ImageView.swift */,
+				2567C69D244617A20028F26B /* StargazerView.swift */,
 				250E5FE723312FC7007246F0 /* StargazersView.swift */,
 			);
 			path = UI;
@@ -200,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				250E5FE823312FC7007246F0 /* StargazersView.swift in Sources */,
+				2567C69E244617A30028F26B /* StargazerView.swift in Sources */,
 				250E5FE523312DF9007246F0 /* DataSource.swift in Sources */,
 				250E5FED23313B74007246F0 /* ImageLoader.swift in Sources */,
 				250E5FE323310FEE007246F0 /* Entities.swift in Sources */,
