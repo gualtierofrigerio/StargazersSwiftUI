@@ -8,17 +8,6 @@
 
 import SwiftUI
 
-struct StargazerView: View {
-    var stargazer:User
-    
-    var body: some View {
-        HStack {
-            ImageView(withURL: stargazer.avatarUrl)
-            Text(stargazer.login)
-        }
-    }
-}
-
 struct StargazersView: View {
     var stargazers:[User] = []
     
