@@ -20,3 +20,9 @@ struct User:Codable, Identifiable {
     var login:String
     var avatarUrl:String
 }
+
+extension User:Equatable {
+    static func ==(lhs:User, rhs:User) -> Bool {
+        lhs.id == rhs.id
+    }
+}
