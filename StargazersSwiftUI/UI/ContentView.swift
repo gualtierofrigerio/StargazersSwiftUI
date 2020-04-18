@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var alertMessage = ""
     @State var stargazers:[User] = []
     @ObservedObject var viewModel = ContentViewModel()
+    var stargazersViewModel = StargazersViewModel()
     
     var body: some View {
         VStack {
@@ -28,11 +29,7 @@ struct ContentView: View {
                 }
             }
             Button(action: {
-                self.viewModel.getStargazers { users in
-                    print("stargazers returned")
-                    self.stargazers = users ?? []
-                    self.showSheet.toggle()
-                }
+                self.showStargazers()
             }) {
                 Text("Show stargazers")
             }.disabled(buttonDisabled)
@@ -43,7 +40,21 @@ struct ContentView: View {
             Alert(title: Text("Alert"), message: Text(alertMessage), dismissButton: .default(Text("Ok")))
         }
         .sheet(isPresented:$showSheet) {
-            StargazersView(stargazers:self.stargazers)
+            StargazersViewInfiniteScroll(viewModel: self.stargazersViewModel)
+        }
+    }
+    
+    private func showStargazers() {
+        self.stargazersViewModel.setTarget(owner:self.viewModel.owner,
+                                      repository: self.viewModel.repository)
+        self.stargazersViewModel.getNextStargazers { success in
+            if success {
+                self.showSheet.toggle()
+            }
+            else {
+                self.alertMessage = "Error getting stargazers"
+                self.showAlert.toggle()
+            }
         }
     }
 }
