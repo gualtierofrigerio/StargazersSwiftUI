@@ -10,7 +10,7 @@ import Foundation
 
 enum Endpoint {
     case Repository(name:String)
-    case Stargazers(owner:String, name:String)
+    case Stargazers(owner:String, name:String, page:Int)
     case User(name:String)
 }
 
@@ -35,8 +35,8 @@ class DataSource {
         }
     }
     
-    func getStargazers(owner:String, repo:String, completion: @escaping([User]?, DataSourceError?) -> Void) {
-        getData(atEndpoint: .Stargazers(owner: owner, name: repo), withType: [User].self) { data, error in
+    func getStargazers(owner:String, repo:String, page:Int, completion: @escaping([User]?, DataSourceError?) -> Void) {
+        getData(atEndpoint: .Stargazers(owner: owner, name: repo, page:page), withType: [User].self) { data, error in
             let stargazers = data as? [User]
             completion(stargazers, error)
         }
@@ -90,8 +90,8 @@ extension DataSource {
         switch endpoint {
         case .Repository(let name):
             urlString = baseURLString + "/users/" + name + "/repos"
-        case .Stargazers(let owner, let repo):
-            urlString = baseURLString + "/repos/" + owner + "/" + repo + "/stargazers"
+        case .Stargazers(let owner, let repo, let page):
+            urlString = baseURLString + "/repos/" + owner + "/" + repo + "/stargazers?page=\(page)"
         case .User(let name):
             urlString = baseURLString + "/users/" + name
         }
