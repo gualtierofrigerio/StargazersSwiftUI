@@ -13,7 +13,19 @@ struct StargazerView: View {
     
     var body: some View {
         HStack {
-            ImageView(withURL: stargazer.avatarUrl)
+            if #available(iOS 15.0, *) {
+                AsyncImage(url: URL(string: stargazer.avatarUrl)!) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 100, height: 100)
+            }
+            else {
+                ImageView(withURL: stargazer.avatarUrl)
+            }
             Text(stargazer.login)
         }
     }
